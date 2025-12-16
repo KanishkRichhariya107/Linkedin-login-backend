@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
-const linkedinRoutes = require("./linkedin");
+const linkedinRoutes = require("./Linkedin");
 
 const app = express();
 
