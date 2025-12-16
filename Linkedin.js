@@ -66,7 +66,9 @@ router.get("/linkedin/callback", async (req, res) => {
 
     /* Redirect to frontend */
     res.redirect(
-      `http://localhost:5173/home?name=${user.full_name}&email=${user.email}`
+    `${process.env.FRONTEND_URL}/home?name=${encodeURIComponent(
+        user.full_name
+    )}&email=${encodeURIComponent(user.email)}`
     );
 
   } catch (err) {

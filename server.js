@@ -1,15 +1,22 @@
-require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+require("dotenv").config();
 
-const linkedinRoutes = require("./Linkedin");
+const linkedinRoutes = require("./linkedin");
 
 const app = express();
-app.use(cors());
+
+app.use(cors({
+  origin: process.env.FRONTEND_URL,
+  credentials: true
+}));
+
 app.use(express.json());
 
+// IMPORTANT
 app.use("/auth", linkedinRoutes);
 
-app.listen(process.env.PORT, () => {
-  console.log("Server running on port 5001");
+const PORT = process.env.PORT || 5001;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
